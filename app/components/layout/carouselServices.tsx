@@ -12,14 +12,11 @@ import {
 } from "@/components/ui/carousel"
 import { Fetch } from "@/app/hooks/fetch"
 
-type ChildProps = {
-  url:string
-}
 
-export const CarouselServices:React.FC<ChildProps> = ({url}) => {
+export const CarouselServices = () => {
     
-    const {services:Services} = Fetch(url)
-
+    const urlServices = "http://localhost:8000/services"
+    const {services:Services} = Fetch(urlServices)
 
   return (
     <Carousel className="w-7xl  m-auto mb-12 border-y">

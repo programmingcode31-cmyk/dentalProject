@@ -10,16 +10,13 @@ import {
 } from "@/components/ui/carousel"
 import { Fetch } from "@/app/hooks/fetch"
 
-type ChildProps = {
-  url:string
-}
-
-export const CarouselSize:React.FC<ChildProps> = ({url}) => {
+export const CarouselSize  = () => {
     const plugin = React.useRef(
         Autoplay({ delay: 2000, stopOnInteraction: false })
     )
     
-    const {facilities:Facilities} = Fetch(url)
+      const urlFacilities  = "http://localhost:8000/facilities"
+    const {facilities:Facilities} = Fetch(urlFacilities)
 
 
   return (
