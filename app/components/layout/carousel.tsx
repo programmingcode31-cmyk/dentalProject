@@ -8,29 +8,20 @@ import {
   CarouselContent,
   CarouselItem
 } from "@/components/ui/carousel"
+import { Fetch } from "@/app/hooks/fetch"
 
-export function CarouselSize() {
+type ChildProps = {
+  url:string
+}
+
+export const CarouselSize:React.FC<ChildProps> = ({url}) => {
     const plugin = React.useRef(
         Autoplay({ delay: 2000, stopOnInteraction: false })
     )
+    
+    const {facilities:Facilities} = Fetch(url)
 
-    const facilities = [
-        {
-            image:"/carousel/fac1.jpg"
-        },
-        {
-            image:"/carousel/fac2.jpg"
-        },
-        {
-            image:"/carousel/fac3.jpg"
-        },
-        {
-            image:"/carousel/fac4.jpg"
-        },
-        {
-            image:"/carousel/fac5.jpg"
-        },
-    ]
+
   return (
     <Carousel
       plugins={[plugin.current]}
@@ -39,7 +30,7 @@ export function CarouselSize() {
       onMouseLeave={plugin.current.reset}
     >
       <CarouselContent>
-        {facilities.map((item, index) => (
+        {Facilities && Facilities.map((item, index) => (
           <CarouselItem key={index} className="basis-1/3  p-0 max-sm:basis-full">
             <div >
               <Card className="h-full">

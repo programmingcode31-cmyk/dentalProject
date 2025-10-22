@@ -3,8 +3,14 @@ import { Card } from "./components/layout/card";
 import {  CarouselSize } from "./components/layout/carousel";
 import Map from "./components/layout/map";
 import { About } from "./components/layout/about";
+import { CarouselServices } from "./components/layout/carouselServices";
+import Image from "next/image";
 
 export default function Home() {
+
+  const urlFacilities  = "http://localhost:8000/facilities"
+  const urlServices = "http://localhost:8000/services"
+
   return (
     <main className="p-2">
       <section className="mb-12">
@@ -24,12 +30,17 @@ export default function Home() {
             <span>we are here to provide you with the best dental care.</span>
           </p>
         </div>
-        <CarouselSize />
+        <CarouselSize url={urlFacilities}/>
         <Card />
         <Map />
       </section>
       <section>
-
+          <div className='mb-12'>
+            <div>
+              <h1 className='text-6xl text-center font-medium mb-7'>Our Services</h1>
+            </div>
+            <CarouselServices url={urlServices}/>
+          </div>
       </section>
     </main>
   );
