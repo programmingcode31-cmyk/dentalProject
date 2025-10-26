@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger,Navbar } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Header } from "./components/header";
 import { ThemeProvider } from "next-themes";
@@ -44,7 +44,12 @@ export default function RootLayout({
             <AppSidebar />
             <main className="w-full">
               <div className="py-3 shadow flex items-center justify-between dark:border-b">
-                <SidebarTrigger />
+                <div className="flex items-center justify-between">
+                  <div className="mr-2">
+                    <SidebarTrigger />
+                  </div>
+                  <Navbar />
+                </div>
                 <Header />
               </div>
               {children}

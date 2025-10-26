@@ -15,18 +15,19 @@ import { Fetch } from "@/app/hooks/fetch"
 
 export const CarouselServices = () => {
     
-    const urlServices = "http://localhost:8000/services"
-    const {services:Services} = Fetch(urlServices)
+    // const urlServices = "http://localhost:8000/services"
+    // const {services:Services} = Fetch(urlServices)
+    const {services:Services} = Fetch()
 
   return (
-    <Carousel className="w-7xl  m-auto mb-12 border-y">
+    <Carousel className="w-7xl  m-auto mb-12 border-y max-sm:w-sm">
       <CarouselContent>
         {Services && Services.map((item, index) => (
           <CarouselItem key={index} className="basis-1/3  p-0 max-sm:basis-full relative">
             <div >
               <Card className="h-full">
                 <div style={{ position: 'relative', width: '100%', height: '400px' }}>
-                    <Image src={item.image} alt="Upload Image"  fill style={{ objectFit: 'cover' }}/>
+                    <Image src={item.image} alt="Upload Image"  fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"/>
                 </div>
               </Card>
               <div className="absolute top-1/4 text-center w-full text-2xl">

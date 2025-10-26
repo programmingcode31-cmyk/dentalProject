@@ -4,6 +4,8 @@ import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, VariantProps } from "class-variance-authority"
 import { PanelLeftIcon } from "lucide-react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 import { useIsMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
@@ -24,6 +26,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -40,6 +48,8 @@ type SidebarContextProps = {
   setOpenMobile: (open: boolean) => void
   isMobile: boolean
   toggleSidebar: () => void
+  navbar:boolean
+  setNavbar:React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const SidebarContext = React.createContext<SidebarContextProps | null>(null)
@@ -68,6 +78,7 @@ function SidebarProvider({
 }) {
   const isMobile = useIsMobile()
   const [openMobile, setOpenMobile] = React.useState(false)
+  const [navbar, setNavbar] = React.useState(false)
 
   // This is the internal state of the sidebar.
   // We use openProp and setOpenProp for control from outside the component.
@@ -122,8 +133,10 @@ function SidebarProvider({
       openMobile,
       setOpenMobile,
       toggleSidebar,
+      navbar,
+      setNavbar
     }),
-    [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar]
+    [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar,navbar,setNavbar]
   )
 
   return (
@@ -258,7 +271,7 @@ function SidebarTrigger({
   onClick,
   ...props
 }: React.ComponentProps<typeof Button>) {
-  const { toggleSidebar } = useSidebar()
+  const { toggleSidebar,setNavbar,navbar } = useSidebar()
 
   return (
     <button
@@ -270,6 +283,7 @@ function SidebarTrigger({
       onClick={(event) => {
         onClick?.(event)
         toggleSidebar()
+        setNavbar(!navbar)
       }}
       {...props}
     >
@@ -698,6 +712,78 @@ function SidebarMenuSubButton({
   )
 }
 
+function Navbar(){
+  const {navbar} = useSidebar()
+  const pathname = usePathname()
+  const [title,setTitle] = React.useState("Home")
+
+  // Menu items.
+  const items = [
+    {
+      title: "Home",
+      url: "/",
+    },
+    {
+      title: "About",
+      navigation:[
+          {
+              label:"Clinic Profile",
+              url:"/pages/ClinicProfile",
+          },
+          {
+              label:"Specialists",
+              url:"/pages/Specialists",
+          },
+      ]
+    },
+    {
+      title: "Services",
+      url: "/pages/Services",
+    },
+    {
+      title: "Location",
+      url: "#",
+    },
+  ]
+
+  const getLength = items.length - 1
+  return <>
+  {
+    navbar &&
+    items.map((items,index)=> (
+      <div key={index}>
+        { 
+          items.url?(
+            <div key={index} className="max-sm:hidden uppercase flex items-center">
+              <Link href={items.url} className={`${pathname===items.url && title===items.title?"text-blue-700 font-bold":""} ${index === getLength?"border-r-0":"border-r-2"} px-15 border-black dark:border-white`} onClick={() => setTitle(items.title)}> 
+                {items.title}
+              </Link>
+            </div>
+          ):(
+             <DropdownMenu >
+              <DropdownMenuTrigger asChild>
+                <h1 className={` ${pathname === "/pages/ClinicProfile"?"text-blue-700 font-bold":""} ${pathname === "/pages/Specialists" ?"text-blue-700 font-bold":""} px-15 border-r-2 border-black dark:border-white cursor-pointer uppercase`} >{items.title}</h1>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56 uppercase">
+                  {
+                    items.navigation?.map((items,index) => (
+                       <DropdownMenuItem key={index}>
+                          <Link href={items.url} className={`${pathname===items.url?"text-blue-700 font-bold":""} cursor-pointer w-full`}> 
+                            {items.label}
+                          </Link>
+                        </DropdownMenuItem>
+                    ))
+                  }
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )
+        }
+      </div>
+    ))
+  }
+  </>
+}
+
 export {
   Sidebar,
   SidebarContent,
@@ -723,4 +809,5 @@ export {
   SidebarSeparator,
   SidebarTrigger,
   useSidebar,
+  Navbar
 }

@@ -1,7 +1,6 @@
 "use client"
-import { Home, Inbox, MapPin, ChevronRight, SquareSlash ,UserPen,UsersRound } from "lucide-react"
+import { Home, Inbox, MapPin, SquareSlash ,UserPen,UsersRound } from "lucide-react"
 import Link from "next/link"
-import { useState } from "react"
 import Image from 'next/image';
 
 import {
@@ -10,11 +9,10 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
   SidebarHeader
 } from "@/components/ui/sidebar"
-import { icon } from "@fortawesome/fontawesome-svg-core";
+import { SidebarComponents } from "./layout/sidebarcomponents";
+import { useState } from "react";
 
 
 // Menu items.
@@ -30,12 +28,12 @@ const items = [
     navigation:[
         {
             label:"Clinic Profile",
-            url:"#",
+            url:"/pages/ClinicProfile",
             icon:UserPen 
         },
         {
             label:"Specialists",
-            url:"#",
+            url:"/pages/Specialists",
             icon:UsersRound 
         },
     ]
@@ -53,7 +51,7 @@ const items = [
 ]
 
 export function AppSidebar() {
-    const [dropDown, setDropDown] = useState(false)
+  const [active,setActive] = useState(false)
   return (
     <Sidebar>
       <SidebarContent>
@@ -72,42 +70,14 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item,index) => (
-                <SidebarMenuItem key={index}>
-                  <SidebarMenuButton className="flex flex-col items-start h-fit py-1">
-                    {
-                        item.url?
-                        (
-                            <Link className="flex items-center" href={item.url}>
-                                <item.icon width={20}/>
-                                <span className="ml-2 font-medium">{item.title}</span>
-                            </Link>
-                        ):
-                        (
-                            <div className="w-full">
-                                <span className="flex items-center justify-between" onClick={() => setDropDown(!dropDown)}>
-                                    <div className="flex items-center">
-                                        <item.icon width={20}/>
-                                        <span className="ml-2 font-medium">{item.title}</span>
-                                    </div>
-                                    <ChevronRight width={20} className={`${dropDown?"rotate-90":""} duration-300`}/>
-                                </span>
-                                <div className={`${dropDown?"":"hidden"}`}>
-                                    {
-                                         item.navigation && item.navigation.map((items,index) => (
-                                            <div key={index} className="py-1 pl-7 hover:bg-slate-200 rounded dark:hover:bg-slate-700">
-                                                <Link className="flex items-center" href={items.url}>
-                                                    <items.icon width={20}/>
-                                                    <span className="ml-2 font-medium">{items.label}</span>
-                                                </Link>
-                                            </div>
-                                        ))
-                                    }
-                                </div>
-                            </div>
-                        )
-                    }
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
+                <SidebarComponents 
+                  key={index} 
+                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                  // @ts-expect-error
+                  item={item} 
+                  active={active} 
+                  setActive={setActive}
+                />
               ))}
             </SidebarMenu>
           </SidebarGroupContent>

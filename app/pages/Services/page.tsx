@@ -24,7 +24,7 @@ export default function Service(){
           <h1 className='text-6xl text-center font-medium mb-7'>What We Offer</h1>
           <p className='text-center text-2xl'>Here at Heavenly Touch dental clinic we offer the best procedures.</p>
         </div>
-        <div className='max-w-7xl m-auto py-7'>
+        <div className='max-w-7xl m-auto py-7 '>
           <div className='flex flex-wrap justify-start other:justify-evenly '>
             <Services  setFilter={setFilter} setModal={setModal}/>
           </div>

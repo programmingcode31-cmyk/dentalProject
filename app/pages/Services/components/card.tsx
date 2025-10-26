@@ -30,7 +30,7 @@ export const Services:React.FC<ChildProps> = ({setFilter,setModal}) => {
     <>
       {
         services.map((item,index) => (
-          <div key={index} className="relative max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 m-3">
+          <div key={index} className="relative max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 m-3 max-sm:max-w-full">
                 <Image className="mb-4 rounded-t-lg h-1/2 w-full border-b" src={item.image} alt="Upload Image" height={400} width={400}/>
               <div className="p-5">
                   <div>

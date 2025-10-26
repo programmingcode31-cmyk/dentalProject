@@ -15,8 +15,9 @@ export const CarouselSize  = () => {
         Autoplay({ delay: 2000, stopOnInteraction: false })
     )
     
-      const urlFacilities  = "http://localhost:8000/facilities"
-    const {facilities:Facilities} = Fetch(urlFacilities)
+    // const urlFacilities  = "http://localhost:8000/facilities"
+    // const {facilities:Facilities} = Fetch(urlFacilities)
+    const {facilities:Facilities} = Fetch()
 
 
   return (
@@ -32,7 +33,7 @@ export const CarouselSize  = () => {
             <div >
               <Card className="h-full">
                 <div style={{ position: 'relative', width: '100%', height: '300px' }}>
-                    <Image src={item.image} alt="Upload Image" fill style={{ objectFit: 'cover' }} />
+                    <Image src={item.image} alt="Upload Image" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"/>
                 </div>
               </Card>
             </div>
