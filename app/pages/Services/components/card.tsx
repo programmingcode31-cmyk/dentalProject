@@ -16,8 +16,9 @@ type ChildProps = {
 
 
 export const Services:React.FC<ChildProps> = ({setFilter,setModal}) => {
-  const url = "http://localhost:8000/services"
-  const {services:services} = Fetch(url)
+  // const url = "http://localhost:8000/services"
+  // const {services:services} = Fetch(url)
+  const {services:services} = Fetch()
 
   function handleFilter(id: number) {
     const getService = services[id];
