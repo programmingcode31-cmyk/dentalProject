@@ -751,10 +751,10 @@ function Navbar(){
   {
     navbar &&
     items.map((items,index)=> (
-      <div key={index}>
+      <div key={index} className="max-sm:hidden">
         { 
           items.url?(
-            <div key={index} className="max-sm:hidden uppercase flex items-center">
+            <div key={index} className="uppercase flex items-center">
               <Link href={items.url} className={`${pathname===items.url && title===items.title?"text-blue-700 font-bold":""} ${index === getLength?"border-r-0":"border-r-2"} px-15 border-black dark:border-white`} onClick={() => setTitle(items.title)}> 
                 {items.title}
               </Link>
