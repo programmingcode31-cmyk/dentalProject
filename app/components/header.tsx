@@ -16,7 +16,7 @@ export const Header = () => {
             </div>
             <div className="mr-3 border py-2 px-4 rounded-2xl bg-green-700 hover:bg-green-800">
                 <Link href="/pages/Appointment" className="flex items-center text-gray-200">
-                    <span className="uppercase font-md">Book an appointment</span>
+                    <span className="uppercase font-md max-sm:text-sm">Book an appointment</span>
                     <ArrowUpRight />
                 </Link>
             </div>
