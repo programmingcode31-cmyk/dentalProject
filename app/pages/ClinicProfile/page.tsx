@@ -35,13 +35,17 @@ export default function Page() {
 <BlurText
             text={`Welcome to Heavenly Touch Dental Clinic, your trusted partner in achieving a healthier, brighter smile.
 
-At Heavenly Touch Dental Clinic, we believe that dental care should be more than just treatment — it should be a comforting experience guided by gentle hands and a caring heart. Under the expert care of Dr. Nel Rugas, our clinic is dedicated to providing top-quality dental services with a personal touch that makes every patient feel at ease.
+For over 20 years, Heavenly Touch Dental Clinic has been committed to delivering exceptional dental care that goes beyond treatment — it’s a comforting experience guided by gentle hands and a caring heart.
+
+Under the expert care of Dr. Nel Rugas, our clinic continues to provide top-quality dental services with a personal touch that makes every patient feel at ease.
 
 Our mission is to help you achieve and maintain optimal oral health through comprehensive, compassionate, and affordable dental care. Whether you’re visiting us for a routine check-up, a smile makeover, or advanced restorative treatment, we’re here to ensure your comfort and satisfaction every step of the way.
 
-With modern facilities, state-of-the-art equipment, and a welcoming atmosphere, we strive to make every visit relaxing and rewarding. Dr. Nel Rugas and the entire Heavenly Touch team take pride in building lasting relationships with our patients — rooted in trust, transparency, and genuine care.
+With modern facilities, state-of-the-art equipment, and a welcoming atmosphere, we strive to make every visit relaxing and rewarding.
 
-Because at Heavenly Touch Dental Clinic, your smile truly deserves a heavenly touch.`}
+For two decades, Dr. Nel Rugas and the entire Heavenly Touch team have taken pride in building lasting relationships with our patients — rooted in trust, transparency, and genuine care.
+
+Because at Heavenly Touch Dental Clinic, your smile truly deserves a heavenly touch — backed by 20 years of trusted service.`}
             delay={150}
             animateBy="words"
             direction="top"
