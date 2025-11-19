@@ -20,7 +20,7 @@ export const CarouselServices = () => {
     const {services:Services} = Fetch()
 
   return (
-    <Carousel className="w-7xl  m-auto mb-17 border-y max-sm:w-xs">
+    <Carousel className="max-w-6xl  m-auto mb-17 border-y max-sm:w-xs">
       <CarouselContent>
         {Services && Services.map((item, index) => (
           <CarouselItem key={index} className="basis-1/3  p-0 max-sm:basis-full relative">
