@@ -742,7 +742,7 @@ function Navbar(){
     },
     {
       title: "Location",
-      url: "#",
+      url: "/pages/Location",
     },
   ]
 

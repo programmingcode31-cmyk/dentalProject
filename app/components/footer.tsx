@@ -11,7 +11,7 @@ export const Footer = () => {
                     <Image src="/upload/heavenly.png" alt="Uploaded Image" width={77} height={77}/>
                     <div className="flex flex-col">
                         <span className=" text-green-700 font-bold text-2xl">Heavenly Touch</span>
-                        <span className="text-xl font-normal">Smile like you mean it!</span>
+                        <span className="text-xl font-normal">We care for your Smile!</span>
                     </div>
                 </div>
                 <div className="w-1/2 mb-7 max-sm:w-full max-sm:text-center">

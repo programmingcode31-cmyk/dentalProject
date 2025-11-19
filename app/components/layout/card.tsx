@@ -29,10 +29,10 @@ const service = [
 
 export const Card = () => {
   return (
-    <div className='flex justify-around flex-wrap mb-12 max-sm:flex-col'>
+    <div className='flex justify-around flex-wrap mb-17 max-sm:flex-col '>
         {
             service.map((item,index) => (
-                <div key={index} className='p-2 hover:scale-110 transition delay-150 duration-300 ease-in-out'>
+                <div key={index} className='p-2 hover:scale-110 transition delay-150 duration-300 ease-in-out max-sm:mb-5'>
                     <div className={`border px-3 py-7 shadow flex flex-col text-center items-center h-full rounded-lg max-w-80 ${item.bg} max-sm:max-w-full`}>
                         <div className='mb-4 text-black bg-white rounded-full p-4'>
                             <item.icon height={33} width={33}/>

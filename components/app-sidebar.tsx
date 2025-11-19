@@ -45,7 +45,7 @@ const items = [
   },
   {
     title: "Location",
-    url: "#",
+    url: "/pages/Location",
     icon: MapPin ,
   },
 ]
@@ -62,7 +62,7 @@ export function AppSidebar() {
                   <Image src="/upload/heavenly.png" alt="Uploaded Image" width={33} height={33}/>
                   <div className="flex flex-col">
                     <span className=" text-green-700 font-bold">Heavenly Touch</span>
-                    <span className="text-sm font-normal">Smile like you mean it!</span>
+                    <span className="text-sm font-normal">We care for your Smile!</span>
                   </div>
                 </div>
             </Link>

@@ -23,7 +23,7 @@ export const CarouselSize  = () => {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-full mb-12 border-y"
+      className="w-full mb-17 border-y"
       onMouseEnter={plugin.current.isPlaying}
       onMouseLeave={plugin.current.reset}
     >
@@ -32,7 +32,7 @@ export const CarouselSize  = () => {
           <CarouselItem key={index} className="basis-1/3  p-0 max-sm:basis-full">
             <div >
               <Card className="h-full">
-                <div style={{ position: 'relative', width: '100%', height: '300px' }}>
+                <div style={{ position: 'relative', width: '100%', height: '400px' }}>
                     <Image src={item.image} alt="Upload Image" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"/>
                 </div>
               </Card>

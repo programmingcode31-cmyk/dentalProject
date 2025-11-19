@@ -40,13 +40,13 @@ export const SidebarComponents:React.FC<ChildProps> = ({item,active,setActive}) 
             {
                 item.url?
                 (
-                    <Link className={`${item.url===pathname?isActive:""} w-full py-1 pl-1 rounded-sm flex items-center `} href={item.url} onClick={() => setActive(true)}>
+                    <Link className={`${item.url===pathname?isActive:""} w-full p-1 rounded-sm flex items-center `} href={item.url} onClick={() => setActive(true)}>
                         <item.icon width={20}/>
                         <span className="ml-2 font-medium">{item.title}</span>
                     </Link>
                 ):
                 (
-                    <div className={`${pathname === "/pages/ClinicProfile"?"bg-slate-100":""} ${pathname === "/pages/Specialists"?"bg-slate-100":""} w-full pl-1`} onClick={() => setActive(!active)}>
+                    <div className={`${pathname === "/pages/ClinicProfile"?"bg-slate-100 dark:bg-slate-800":""} ${pathname === "/pages/Specialists"?"bg-slate-100 dark:bg-slate-800":""} p-1 w-full `} onClick={() => setActive(!active)}>
                         <span className="flex items-center justify-between" onClick={() => setDropDown(!dropDown)}>
                             <div className="flex items-center">
                                 <item.icon width={20}/>
@@ -57,7 +57,7 @@ export const SidebarComponents:React.FC<ChildProps> = ({item,active,setActive}) 
                         <div className={`${dropDown?"":"hidden"}`}>
                             {
                                     item.navigation && item.navigation.map((items,index) => (
-                                    <div key={index} className={`${items.url===pathname?isActive:inActive} py-1 pl-7`}>
+                                    <div key={index} className={`${items.url===pathname?isActive:inActive} rounded-sm py-1 pl-7`}>
                                         <Link className="flex items-center" href={items.url}>
                                             <items.icon width={20}/>
                                             <span className="ml-2 font-medium">{items.label}</span>
